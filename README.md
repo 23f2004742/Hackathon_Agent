@@ -1,313 +1,895 @@
-# Hackathon Agent OS
+Hackathon Agent OS
 
-An autonomous hackathon development environment. Give it a problem statement;
-it selects a team of specialists, plans the work, builds, tests, documents,
-pitches, audits and packages a submission.
+«From problem statement to submission — autonomously.»
 
-28 specialists across 7 teams, 27 tools, coordinated by an Orchestrator through
-a dependency-aware task graph.
+An autonomous, Claude-powered multi-agent system for building hackathon projects end-to-end.
 
-## Setup
-
-It runs on **your Claude subscription**. There is no API key, and no paid
-request anywhere in the system.
-
-```bash
-# 1. install
-pip install -r requirements.txt
-
-# 2. log in with your existing Claude account (opens a browser, once)
-claude
-
-# 3. confirm — this makes no model request and costs no usage
-python hackathon.py auth
-```
-
-`auth` should print `AUTHENTICATION OK` and name your plan. If it does not, it
-prints the exact command that will fix it.
-
-On a machine with no browser (CI, a server, a container), swap step 2 for a
-long-lived subscription token:
-
-```bash
-claude setup-token                        # prints a token; requires Pro/Max/Team/Enterprise
-export CLAUDE_CODE_OAUTH_TOKEN=<token>    # PowerShell: $env:CLAUDE_CODE_OAUTH_TOKEN = "<token>"
-```
-
-Then run a hackathon:
-
-```bash
-python hackathon.py init my-hackathon \
-  --problem      brief/problem.md \
-  --judging      brief/judging.md \
-  --submission   brief/submission.md \
-  --constraints  brief/constraints.md
-
-python hackathon.py --project my-hackathon plan     # who's needed, and why
-python hackathon.py --project my-hackathon run      # work until it cannot
-python hackathon.py --project my-hackathon status   # the dashboard
-```
-
-`--backend simulated` exercises the same machinery with no model at all, so you
-can inspect the pipeline for free — it produces structurally valid artifacts
-that say, in their own first paragraph, that they are scaffolding.
-
-### Authentication, billing, limits
-
-| | |
-|---|---|
-| **Mechanism** | The [Claude Agent SDK](https://code.claude.com/docs/en/agent-sdk/overview) (`claude-agent-sdk`), which runs the Claude Code CLI and uses the credential you logged in with. |
-| **Billing** | Your Claude subscription. Usage counts against your plan's windows; nothing is billed per token. |
-| **API keys** | Never read. If `ANTHROPIC_API_KEY` (or a bearer token, or a Bedrock/Vertex/Foundry variable) is set in your shell, it is **blanked for the CLI subprocess** so a stray key cannot silently redirect the run onto paid billing. |
-| **When the limit is hit** | The run stops. It does not fall back to an API key, does not enable usage credits, and does not retry into a closed window. Finished work is in the ledger — re-run the same command after the window resets and it resumes without repeating anything. |
-
-The one thing to know: this is your own subscription driving your own machine.
-Anthropic does not permit third-party products to offer *other people's*
-claude.ai logins, so do not ship this as a hosted service that logs your users
-in — for that you would need an API key and their approval.
-
-The escape hatch, off by default and requiring two deliberate acts, is
-`HACKATHON_ALLOW_PAID_API=1` plus `--backend anthropic`. Nothing selects it for
-you.
+Hackathon Agent OS takes a hackathon problem statement and coordinates specialized agents across research, product, engineering, design, validation, communication, and delivery to turn the idea into a tested, documented, demo-ready, submission-ready project.
 
 ---
 
-## What makes these real agents
+✨ What It Does
 
-Not a set of system prompts. Each specialist is a bundle the runtime enforces:
+Instead of manually deciding:
 
-```
-tools        ── only these are sent to the model; guard() re-checks at call time
-write_paths  ── writes outside scope return an error naming the real scope
-requires     ── missing inputs → BLOCKED before a token is spent
-produces     ── a "completed" claim with no files on disk becomes FAILED
-postconditions ── 66 declarative checks: does the doc cover adoption, does the
-                  manifest parse, does the generated Python compile
-```
+- What should we build?
+- What technologies should we use?
+- Which research is necessary?
+- Which engineers do we need?
+- What should each agent work on?
+- Which model should handle each task?
+- How do we test everything?
+- How do we prepare the submission?
+- What files are safe to push to GitHub?
 
-The Tester, for example, **cannot write to `src/`**. An agent that can patch
-the code it is testing makes reports green instead of making products work.
-Failures leave as proposed fix tasks for the Developer; only the Orchestrator
-schedules them.
+Hackathon Agent OS handles the workflow automatically.
 
-```bash
-python -m pytest tests/test_boundaries.py -v   # the boundaries, asserted
-python -m pytest tests -q                      # 240 tests
-```
+                    PROBLEM STATEMENT
+                           │
+                           ▼
+                  ┌──────────────────┐
+                  │ Project Analysis  │
+                  └────────┬─────────┘
+                           │
+                           ▼
+              ┌─────────────────────────┐
+              │ Intelligent Agent Planner│
+              └────────────┬────────────┘
+                           │
+                           ▼
+                    Specialist Selection
+                           │
+                           ▼
+                       Task Graph
+                           │
+             ┌─────────────┴─────────────┐
+             ▼                           ▼
+      Token Optimizer              Model Planner
+             │                           │
+             └─────────────┬─────────────┘
+                           ▼
+                 Specialist Execution
+                           │
+                           ▼
+                       Validation
+                           │
+                           ▼
+                     Re-planning
+                           │
+                           ▼
+                  Documentation / Demo
+                           │
+                           ▼
+                     Final Audit
+                           │
+                           ▼
+                       Packaging
+                           │
+                           ▼
+                    GitHub Preparation
+                           │
+                           ▼
+                       Submission
 
 ---
 
-## Commands
+🧠 Architecture
 
-| | |
-|---|---|
-| `init` | Create a project from a brief |
-| `plan` | Analyse, select specialists, build the graph, assign models and token budgets |
-| `select <brief>` | Preview selection for any brief without creating a project (`--planner` for the Claude pass) |
-| `run` | Work autonomously (`--once` one wave, `--task <id>` one task, `--dry-run`) |
-| `resume` | Re-queue failures and continue; completed work replays from the ledger |
-| `status` | The dashboard: tasks, specialists, models, token optimisation, package readiness |
-| `package` | Build a clean submission package (`--dry-run` to preview, `--force` to override a scan) |
-| `github init\|prepare\|push` | Prepare a GitHub-ready repository; `push` requires explicit confirmation |
-| `models` | The model catalogue and the policy that picks between them |
-| `tasks` / `graph` | Task table / dependency tree |
-| `handoffs` | What each specialist reported (`--json`) |
-| `agents [name]` | The roster, or one specialist's full contract |
-| `tools` | The tool registry by category |
-| `auth` | Which credential a run would use, and how to fix it (no model request) |
-| `routing` | The effort tier each specialist runs at, and why |
-| `research` `scope` `design` `build` `test` `demo` `docs` `pitch` `audit` `submit` | Run one stage only |
+Hackathon Agent OS is built around a multi-agent orchestration architecture.
 
-Global flags come **before** the subcommand: `--project`, `--backend`,
-`--parallel`, `--approve` (prompt on every write/shell call), `--no-cache`
-(re-run tasks the ledger already has), `--model` (force one model for the whole
-run), `--no-optimize` (send raw context digests), `--no-planner` (deterministic
-selection only), `--quiet`.
+The central orchestrator does not perform the work itself. It decomposes the project into dependency-aware tasks and delegates them to specialized agents.
 
-> The stage verb that runs the Submission Manager is `submit`. `package` is now
-> the packaging command, which is what someone typing that word expects.
+Each specialist has:
+
+- a defined mission
+- specific tools
+- required inputs
+- expected outputs
+- artifact contracts
+- permitted write paths
+- dependencies
+- model/effort configuration
+
+This prevents every agent from having unrestricted access to the entire system.
 
 ---
 
-## Not every project gets all 28
+👥 Specialist Teams
 
-Selection is two stages. First, negation-aware capability detection over the
-full brief — problem, constraints, judging criteria, submission requirements:
+The system currently contains 28 specialist roles across seven teams.
 
-```bash
-$ python hackathon.py select "Static site for a food bank. No backend, no database."
-# frontend + ux + ui; no backend, no database, no ml
+Research
 
-$ python hackathon.py select "Tabular leaderboard task, scored by RMSE. No interface required."
-# ml_engineer; no frontend, no designers, no backend
-```
+- "market_researcher"
+- "competitor_researcher"
+- "technical_researcher"
+- "user_researcher"
 
-Then `plan` asks Claude, in one toolless call carrying only the brief and the
-roster, which specialists this problem actually needs. It can add roles the
-regexes missed and remove ones they guessed at — but it cannot drop the
-mandatory delivery spine, cannot overrule a capability the brief states
-outright, and cannot invent a specialist that is not in the roster.
+Product
 
-Both halves are recorded. Every skip names the capability that would have
-selected it:
+- "requirements_analyst"
+- "product_manager"
+- "strategist"
 
-```
-SKIPPED (1)
+Engineering
+
+- "architect"
+- "backend_engineer"
+- "frontend_engineer"
+- "ml_engineer"
+- "ai_engineer"
+- "database_engineer"
+- "developer"
+- "devops_engineer"
+
+Design
+
+- "ux_designer"
+- "ui_designer"
+- "brand_designer"
+
+Validation
+
+- "tester"
+- "code_reviewer"
+- "security_reviewer"
+- "requirements_auditor"
+
+Communication
+
+- "technical_writer"
+- "pitch_strategist"
+- "presentation_builder"
+
+Delivery
+
+- "demo_engineer"
+- "final_auditor"
+- "submission_manager"
+
+The system does not automatically run every specialist.
+
+---
+
+🎯 Intelligent Specialist Selection
+
+The Agent OS determines which specialists are actually required for a particular hackathon.
+
+Selection happens in multiple stages.
+
+Problem Statement
+       ↓
+Deterministic Capability Detection
+       ↓
+Claude Capability Planner
+       ↓
+Dependency / Coherence Validation
+       ↓
+Final Specialist Set
+
+The planner can identify capabilities such as:
+
+- AI
+- ML
+- LLM
+- RAG
+- NLP
+- Computer Vision
+- frontend
+- backend
+- database
+- APIs
+- cloud
+- DevOps
+- security
+- blockchain
+- payments
+- IoT
+- hardware
+- research
+- UX/UI
+- data analysis
+
+For example, a simple ML notebook should not automatically receive frontend, backend, UI, database, and DevOps specialists.
+
+The system also records why a specialist was skipped.
+
+Example:
+
+frontend_engineer
+Status: SKIPPED
+
+Reason:
+The project is a CLI/data-analysis submission and does not require a web interface.
+
+---
+
+🔥 Token & Context Optimization
+
+Hackathon Agent OS includes a dedicated token optimization layer.
+
+The goal is to avoid wasting Claude usage by repeatedly sending unnecessary context.
+
+Instead of sending the entire repository to every agent, the system provides targeted context.
+
+Optimization includes
+
+- context prioritization
+- context deduplication
+- artifact compression
+- targeted file excerpts
+- dependency-aware context retrieval
+- knowledge-base reuse
+- result caching
+- token budgeting
+- context-size monitoring
+
+Context priority generally follows:
+
+Current Task
+     ↓
+Direct Dependencies
+     ↓
+Relevant Artifacts
+     ↓
+Project State
+     ↓
+Relevant Knowledge
+     ↓
+Historical References
+     ↓
+General Background
+
+Agents can use their filesystem tools to inspect additional information when necessary.
+
+The system also records optimization metrics such as:
+
+estimated_input_tokens
+estimated_output_tokens
+context_tokens_removed
+cache_hits
+cache_misses
+compression_ratio
+
+---
+
+🤖 Dynamic Model Planning
+
+The Agent OS does not permanently force expensive models onto specific roles.
+
+Model selection is task-aware.
+
+Role
+ ↓
+Task
+ ↓
+Complexity / Risk / Importance
+ ↓
+Model Planner
+ ↓
+Routing Constraints
+ ↓
+Final Model
+
+The configured default model is used whenever it is sufficient.
+
+More capable models can be selected when a task genuinely requires additional reasoning.
+
+Typical examples:
+
+Simple
+
+- file organization
+- formatting
+- straightforward documentation
+- basic extraction
+
+→ Default model
+
+Medium
+
+- requirements analysis
+- normal implementation
+- UI work
+- research synthesis
+- test generation
+
+→ Default unless escalation is justified
+
+Complex
+
+- difficult architecture
+- complex debugging
+- security analysis
+- advanced AI/ML reasoning
+- high-risk final review
+
+→ Stronger model when justified
+
+The model planner records its decision:
+
+{
+  "task": "security_review",
+  "model": "opus",
+  "reason": "High-risk security analysis with multiple interacting components",
+  "confidence": 0.91
+}
+
+Model decisions are persisted and can be inspected.
+
+Explicit model overrides are also supported.
+
+---
+
+🔄 Persistent State & Resume
+
+Long hackathon runs can exceed a single Claude usage window.
+
+The system therefore persists:
+
+- task states
+- specialist selection
+- planner decisions
+- model decisions
+- artifacts
+- handoffs
+- failures
+- retries
+- checkpoints
+- token optimization information
+- packaging state
+
+A run can be resumed without restarting completed tasks.
+
+python hackathon.py resume
+
+The system reconstructs project context from persistent state, artifacts, handoffs, and the knowledge layer.
+
+---
+
+🧩 Task Graph
+
+Tasks are represented as a dependency graph rather than a simple linear pipeline.
+
+Example:
+
+Requirements
+     │
+     ├──────────────┐
+     ▼              ▼
+Product         Architecture
+                    │
+          ┌─────────┼─────────┐
+          ▼         ▼         ▼
+       Backend   Frontend      AI
+          │         │          │
+          └─────────┼──────────┘
+                    ▼
+                  Testing
+                    │
+                    ▼
+               Final Audit
+                    │
+                    ▼
+                 Package
+
+Independent tasks can execute in waves.
+
+Failed or blocked tasks can propagate through the dependency graph without forcing the entire project to restart.
+
+---
+
+📚 Cross-Hackathon Knowledge
+
+The parent ".knowledge/" directory acts as a persistent knowledge base.
+
+It can contain reusable:
+
+- engineering patterns
+- architecture decisions
+- research
+- prompts
+- UI patterns
+- lessons learned
+- implementation techniques
+- hackathon-specific insights
+
+Previous hackathons can be used as references for new projects.
+
+Historical projects are treated as references and should not be modified automatically.
+
+---
+
+🛠️ Tools
+
+Agents receive only the tools required for their role.
+
+The tool system includes capabilities for:
+
+- filesystem operations
+- code search
+- shell execution
+- web research
+- URL fetching
+- source recording
+- knowledge retrieval
+- project management
+- security scanning
+- document generation
+- structured handoffs
+
+The system also supports the Claude Agent SDK's web search capability where configured.
+
+---
+
+📦 Packaging
+
+The Agent OS can create a clean hackathon submission package.
+
+python hackathon.py package
+
+The package process can prepare:
+
+- source code
+- README
+- requirements
+- documentation
+- demo materials
+- presentation assets
+- configuration templates
+
+Generated/runtime files are excluded.
+
+Typical exclusions include:
+
+.env
+.venv
+__pycache__
+.pytest_cache
+node_modules
+.git
+temporary files
+runtime state
+credentials
+private keys
+
+---
+
+🔐 Security & Secret Scanning
+
+Before packaging or GitHub preparation, the system checks for potentially sensitive information.
+
+It can detect things such as:
+
+- API keys
+- access tokens
+- passwords
+- private keys
+- ".env" files
+- cloud credentials
+- database credentials
+
+A package should not be considered GitHub-ready until the secret scan passes.
+
+Example:
+
+SECRET SCAN
+-----------
+
+✓ No secrets detected
+✓ No credential files detected
+✓ .env excluded
+
+---
+
+🐙 GitHub Workflow
+
+The system separates building a package from actually pushing it.
+
+Initialize GitHub repository
+
+python hackathon.py github init
+
+This prepares:
+
+- Git repository
+- ".gitignore"
+- README
+- repository structure
+
+Review commit contents
+
+python hackathon.py github prepare
+
+This shows:
+
+- files to commit
+- excluded files
+- secret scan
+- package size
+- GitHub readiness
+
+Push
+
+python hackathon.py github push
+
+Pushing requires explicit user action.
+
+The Agent OS does not silently push code to GitHub.
+
+---
+
+📋 Planning
+
+View the project plan with:
+
+python hackathon.py plan
+
+The planner can show:
+
+PROJECT
 -------
-  ○ ml_engineer   no ml or vision signal in the brief; say so explicitly if
-                  the project needs it
-```
+Type:
+Complexity:
+Capabilities:
 
-If a specialist later discovers the project *does* need something nobody
-staffed, the Orchestrator adds those specialists and their tasks and carries on.
-It does not restart the hackathon.
+SPECIALISTS
+-----------
+Selected:
+Skipped:
 
----
+TASK GRAPH
+----------
+Wave 1:
+Wave 2:
+Wave 3:
+...
 
-## Layout
+MODEL PLAN
+----------
+Default:
+Sonnet:
+Opus:
 
-```
-hackathon/
-├── hackathon_os/          the OS
-├── .knowledge/            cross-hackathon lessons and components (shared)
-├── AGENT/                 this build's own decision and reference logs
-├── tests/                 240 tests
-├── synthetic_test/        a completed end-to-end run you can inspect
-├── AGENTS.md              every specialist: tools, scope, contract, handoff
-├── ARCHITECTURE.md        how it works
-└── BUILD_REPORT.md        what was built, what was tested, what was not
-```
-
-A project directory gets `RESEARCH/ PRODUCT/ DESIGN/ VALIDATION/ DEMO/
-DOCUMENTATION/ PRESENTATION/ SUBMISSION/ FINAL/ src/ tests/ AGENT/` — and the
-specialist write scopes are defined against exactly that shape. `hackathon package` builds `dist/submission/` from it.
-
----
-
-## Three memory layers
-
-| Layer | Where | What |
-|---|---|---|
-| Global | `.knowledge/` | Lessons and reusable components across every hackathon. Read via `knowledge_search`. |
-| Project | `<project>/AGENT/` | State, plan, decision log, reference decisions |
-| Task | assembled per run | Only the context slices a spec declares — digests, then prioritised, deduplicated, compressed and trimmed to a per-task budget |
-
-This is why a Brand Designer never receives the test report, and why the same constraint appearing in three places is sent once.
+TOKEN PLAN
+----------
+Estimated context:
+Estimated output:
+Cache opportunities:
 
 ---
 
-## Spending the budget where it matters
+📊 Status
 
-On a subscription the currency is not dollars, it is rate-limit windows — and
-Opus has its own weekly window, separate from the rest.
+View current project state with:
 
-**The model is chosen per task, not per role.** The default (Sonnet) is presumed
-sufficient; anything stronger has to be argued for. A task scores on reasoning
-weight, priority, effort, project complexity, previous attempts and domain risk,
-and only a high score buys an upgrade. Mechanical work — markdown to slides,
-files to a checklist — drops *below* the default, because there is no judgement
-to buy. A typical run lands around 70% default, 20% upgraded, 10% below.
+python hackathon.py status
 
-Every decision carries its reason and is shown by `plan`:
+Example:
 
-```
-architecture   opus     complexity 7/10 justifies an upgrade: reasoning weight 3,
-                        critical priority, high effort   (confidence 0.65)
-slides         haiku    mechanical transform with no judgement to buy  (0.90)
-docs           sonnet   standard task (complexity 4/10); default is sufficient
-```
+PROJECT STATUS
+==============
 
-Once a task starts on a model it stays there. A failure escalates it one step,
-once, and the escalation is recorded. `--model opus` overrides everything
-deliberately; `python hackathon.py models` prints the catalogue and the policy;
-`HACKATHON_DEFAULT_MODEL` and `HACKATHON_MODELS` reconfigure it without a code
-change, because model ids go stale.
+Tasks
+-----
+Completed: 18
+Running: 2
+Pending: 5
+Failed: 0
+Skipped: 3
 
-`routing.py` still sets effort and turn limits per role —
-`python hackathon.py routing` prints that table.
+SPECIALISTS
+-----------
+Selected: 20 / 28
 
-**Context is optimised before it is sent.** Candidate slices are ranked into
-seven priority bands, deduplicated across sources (the same constraint appears
-in the state, a handoff and an artifact digest — it is sent once), compressed if
-oversized, and trimmed to a per-task budget. Compression keeps the decisions,
-interfaces, endpoints, constraints, paths, errors and acceptance criteria and
-drops the prose between them; it never truncates, because the acceptance
-criteria live at the *bottom* of the document. What was abridged is labelled, so
-the agent knows to call `read_file`.
+MODELS
+------
+Default: 14
+Sonnet: 5
+Opus: 1
 
-`status` reports what that saved:
-
-```
 TOKEN OPTIMIZATION
-  Estimated input   40,640 tokens sent
-  Context saved     4,436 tokens (10% of candidate context)
-  Compression ratio 0.902
-  Cache hits        0
-  Cache misses      27
-  deduplicated 120 block(s), compressed 0, dropped 0 low-priority slice(s)
-```
+------------------
+Cache hits: 17
+Cache misses: 6
+Context saved: ...
 
-Three further savings:
-
-- **Task deduplication.** Every task is fingerprinted over its spec, model,
-  objective, context and the *content* of its required inputs. An identical task
-  whose artifacts are still on disk unmodified is replayed from
-  `AGENT/cache/ledger.json` with no model call. This is what makes `run`
-  resumable after a crash or a usage limit.
-- **The artifact contract is in the prompt.** A specialist is told the checks
-  its files must pass before it writes them, rather than discovering them by
-  failing — which used to cost a whole extra run.
-- **No inherited context.** `setting_sources=[]`: a specialist gets the context
-  slices its spec declares and nothing else — not your `CLAUDE.md`, settings or
-  skills.
-
----
-
-## Shipping it
-
-```bash
-python hackathon.py package          # dist/submission/, secret-scanned
-python hackathon.py github init      # git init, .gitignore, README, validate
-python hackathon.py github prepare   # exactly what would be committed
-python hackathon.py github push --yes
-```
-
-Packaging **fails** if a live-looking secret is anywhere in the working tree —
-not just in the files it would copy, because a `.env` you excluded from the
-archive is still sitting in the directory `git add -A` runs over:
-
-```
-BLOCKED
+PACKAGE
 -------
-Potential secret detected:
-  .env
-```
-
-`prepare` asks git what it would commit rather than reconstructing it, so what
-you read is what you get. `push` is the only outward-facing action in the whole
-system: it refuses without explicit confirmation, refuses on a failed scan, and
-stores no GitHub credential of its own — it uses the `git` and `gh` you already
-have.
+Status: Ready
+Secret scan: PASS
+GitHub: Ready
 
 ---
 
-## Honest status
+🚀 Quick Start
 
-The orchestration machinery is tested end to end: **240 passing tests**, a
-complete 27-task synthetic hackathon producing a real `.pptx`, a secret-free
-package and an initialised repository.
+1. Clone
 
-Live runs against a real model work on a Claude subscription, and single
-specialists have been verified end to end on it. A full 28-specialist live run
-has not been completed, so **content quality across a whole hackathon is still
-unproven** — the plumbing is what is tested. The Claude capability planner in
-particular is exercised only through the simulated backend, which re-derives its
-answer from the deterministic rules: the merge logic and guardrails are tested,
-the judgement is not. `BUILD_REPORT.md` sets out exactly what that does and does
-not demonstrate, and lists ten known limitations.
+git clone <repository-url>
+cd hackathon
 
-## Requirements
+2. Create a virtual environment
 
-Python 3.11+. `claude-agent-sdk` and the Claude Code CLI (the SDK bundles a
-binary on most platforms), plus `requests`, `python-pptx`, `reportlab`,
-`openpyxl`, `pytest`. A Claude Pro, Max, Team or Enterprise plan. No API key.
+Windows
+
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+
+Linux / macOS
+
+python3 -m venv .venv
+source .venv/bin/activate
+
+3. Install dependencies
+
+python -m pip install -r requirements.txt
+
+4. Authenticate Claude
+
+The intended live backend uses Claude Agent SDK subscription authentication.
+
+Authenticate through Claude as configured for your environment.
+
+Then verify:
+
+python hackathon.py auth
+
+5. Create a project
+
+Provide a hackathon project containing the required problem statement and submission information.
+
+Then:
+
+python hackathon.py --project <project-directory> plan
+
+6. Run
+
+python hackathon.py --project <project-directory> run
+
+7. Resume
+
+If execution is interrupted:
+
+python hackathon.py --project <project-directory> resume
+
+8. Package
+
+python hackathon.py --project <project-directory> package
+
+9. Prepare GitHub
+
+python hackathon.py --project <project-directory> github init
+python hackathon.py --project <project-directory> github prepare
+
+10. Push
+
+Only after reviewing the generated files:
+
+python hackathon.py --project <project-directory> github push
+
+---
+
+🧪 Testing
+
+The project includes a synthetic hackathon environment and automated tests.
+
+Run:
+
+python -m pytest -q
+
+Current test status:
+
+240 passed
+
+The tests cover areas including:
+
+- orchestration
+- task graph
+- state persistence
+- specialist selection
+- tools
+- handoffs
+- authentication
+- packaging
+- security
+- model planning
+- token optimization
+- CLI behavior
+
+A synthetic end-to-end hackathon can also be used to validate the orchestration pipeline without consuming a live Claude subscription run.
+
+---
+
+📁 Project Structure
+
+hackathon/
+│
+├── hackathon.py
+│
+├── hackathon_os/
+│   ├── orchestrator.py
+│   ├── taskgraph.py
+│   ├── state.py
+│   ├── context.py
+│   ├── ledger.py
+│   ├── handoff.py
+│   ├── routing.py
+│   ├── model_planner.py
+│   ├── token_optimizer.py
+│   ├── packaging.py
+│   ├── github.py
+│   ├── subscription.py
+│   ├── auth.py
+│   ├── llm.py
+│   │
+│   ├── agents/
+│   │   ├── research/
+│   │   ├── product/
+│   │   ├── engineering/
+│   │   ├── design/
+│   │   ├── validation/
+│   │   ├── communication/
+│   │   └── delivery/
+│   │
+│   └── tools/
+│       ├── base.py
+│       ├── filesystem.py
+│       ├── shell.py
+│       ├── research.py
+│       ├── project.py
+│       ├── security.py
+│       ├── documents.py
+│       └── handoff_tool.py
+│
+├── .knowledge/
+│   ├── index.json
+│   ├── index.md
+│   └── patterns.md
+│
+├── synthetic_test/
+│
+├── tests/
+│
+├── AGENTS.md
+├── ARCHITECTURE.md
+├── BUILD_REPORT.md
+├── requirements.txt
+└── README.md
+
+---
+
+🔑 Design Principles
+
+1. Specialization over generalization
+
+Every specialist has a specific responsibility.
+
+2. Least privilege
+
+Agents only receive the tools and write access required for their task.
+
+3. Dependency-aware execution
+
+Tasks are executed according to their dependencies.
+
+4. Minimal context
+
+Agents receive the smallest useful context rather than the entire project.
+
+5. Default to sufficient models
+
+Use the configured default model unless stronger reasoning is justified.
+
+6. Persistent execution
+
+Interrupted runs should resume rather than restart.
+
+7. Evidence over fabrication
+
+Research, metrics, user studies, and benchmarks must never be fabricated.
+
+8. Human-controlled delivery
+
+The system can prepare a GitHub repository but does not silently push or submit work.
+
+9. Reusable knowledge
+
+Lessons and patterns can be reused across hackathons without modifying historical projects.
+
+---
+
+⚠️ Current Limitations
+
+The architecture and automated test suite are validated, but live hackathon runs depend on:
+
+- Claude Agent SDK availability
+- Claude subscription authentication
+- subscription usage limits
+- model availability
+- external web services
+- the complexity of the target hackathon
+
+A full live hackathon run may consume a significant portion of a Claude subscription usage window.
+
+The synthetic test environment is therefore provided for deterministic end-to-end testing.
+
+---
+
+🗺️ Roadmap
+
+Potential future improvements include:
+
+- stronger automatic replanning
+- improved long-term knowledge retrieval
+- better token estimation
+- richer GitHub integration
+- automated issue generation
+- pull-request workflows
+- deeper codebase understanding
+- parallel agent execution optimization
+- improved failure recovery
+- benchmark-driven model routing
+- hackathon-specific strategy optimization
+
+---
+
+🤝 Contributing
+
+Contributions are welcome.
+
+When contributing:
+
+1. Preserve specialist boundaries.
+2. Keep tools least-privileged.
+3. Add tests for new behavior.
+4. Avoid hard-coded credentials.
+5. Do not introduce unnecessary model usage.
+6. Preserve resumability.
+7. Keep generated artifacts out of Git.
+8. Document architectural changes.
+
+---
+
+📜 License
+
+Choose and add an appropriate open-source license before publishing the repository.
+
+---
+
+⭐ Philosophy
+
+Hackathons are usually constrained by time, not ideas.
+
+Hackathon Agent OS is designed to turn that constraint into an engineering pipeline:
+
+Idea
+ ↓
+Research
+ ↓
+Strategy
+ ↓
+Product
+ ↓
+Architecture
+ ↓
+Implementation
+ ↓
+Design
+ ↓
+Testing
+ ↓
+Documentation
+ ↓
+Demo
+ ↓
+Pitch
+ ↓
+Audit
+ ↓
+Package
+ ↓
+Submission
+
+One problem statement in.
+One competition-ready project out.
