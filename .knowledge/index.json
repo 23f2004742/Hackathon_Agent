@@ -1,0 +1,206 @@
+{
+  "schema_version": 1,
+  "updated": "2026-09-04",
+  "root": "C:/Users/soumy/OneDrive/Desktop/hackathon",
+  "notes": "Projects marked external live OUTSIDE the hackathon/ tree. They are referenced read-only and must never be modified while working a new hackathon.",
+  "projects": [
+    {
+      "name": "hackathon-agent-os",
+      "title": "Hackathon Agent OS \u2014 multi-specialist hackathon automation",
+      "location": "C:/Users/soumy/OneDrive/Desktop/hackathon/hackathon_os",
+      "external": false,
+      "date": "2026-09-04",
+      "domains": [
+        "agentic AI",
+        "multi-agent orchestration",
+        "developer tooling",
+        "hackathon automation",
+        "LLM tool use"
+      ],
+      "technologies": [
+        "Python 3.13",
+        "anthropic>=1.3.0",
+        "python-pptx",
+        "reportlab",
+        "openpyxl",
+        "pytest",
+        "claude-opus-5",
+        "claude-sonnet-5"
+      ],
+      "ai_ml_usage": [
+        "client.beta.messages.tool_runner agent loop per specialist",
+        "28 specialist agents with enforced tool/write boundaries",
+        "Per-agent model and effort selection for cost control"
+      ],
+      "architecture": "Orchestrator + dependency-aware task graph dispatching 28 AgentSpecs through a thread-local ExecutionContext that enforces a tool allowlist and write scope. Handoffs are a typed tool call, not parsed prose. Dual backend: real Anthropic, plus a simulated one that drives the same tool layer for free deterministic end-to-end testing.",
+      "features": [
+        "Negation-aware specialist selection from the full brief (28 -> 19-27 per project)",
+        "Artifact contracts: a 'completed' claim with no files on disk becomes FAILED",
+        "65 declarative postconditions across 32 artifacts",
+        "Parallel waves grouped by write-scope disjointness",
+        "Self-correction: re-queue once with the failure appended, then abandon",
+        "Provenance ledger + verify_claims lint so the pitch invents nothing",
+        "Real .pptx / .pdf / .zip generation with unconditional secret exclusion",
+        "Three memory layers with budgeted, targeted context digests"
+      ],
+      "outcome": "Working. 63 passing tests; a 27-task synthetic hackathon completes in 7 waves producing 37 files including a real 7-slide pptx and a secret-free submission.zip. NOT yet validated against a live model \u2014 no API key in the build environment, so artifact CONTENT quality is unproven.",
+      "selection_status": "n/a (infrastructure)",
+      "reusable_components": [
+        {
+          "path": "hackathon_os/tools/base.py",
+          "what": "ExecutionContext: thread-local tool allowlist + write scoping. The core reusable idea."
+        },
+        {
+          "path": "hackathon_os/handoff.py",
+          "what": "Typed agent handoff + validate_against, which downgrades unearned success"
+        },
+        {
+          "path": "hackathon_os/taskgraph.py",
+          "what": "Dependency graph with cycle detection, priority/value-density ordering, blocked propagation"
+        },
+        {
+          "path": "hackathon_os/llm.py",
+          "what": "AnthropicBackend (tool_runner, pause_turn, refusal fallback) + SimulatedBackend pattern"
+        },
+        {
+          "path": "hackathon_os/tools/security.py",
+          "what": "Secret + insecure-pattern scanners with placeholder discrimination"
+        },
+        {
+          "path": "hackathon_os/glyphs.py",
+          "what": "Terminal capability detection with ASCII fallback \u2014 fixes Windows cp1252 crashes"
+        },
+        {
+          "path": "hackathon_os/tools/documents.py",
+          "what": "pptx/pdf/zip generation; build_zip excludes secrets unconditionally"
+        }
+      ],
+      "lessons": [
+        "Enforce agent boundaries in code, not prompts \u2014 allowlist + write scope + artifact contract",
+        "Separate the agent that tests from the agent that fixes, or reports go green instead of products working",
+        "A deterministic simulated backend over the real tool layer makes multi-agent systems testable for free",
+        "Pair parallel results with their task at dispatch; positional zipping breaks when work is regrouped",
+        "Keyword-based capability detection must handle negation or it staffs work the brief ruled out"
+      ]
+    },
+    {
+      "name": "playhack-iit-guwahati",
+      "title": "PLAYHACK - ML Track, IIT Guwahati (Round 1)",
+      "location": "C:/Users/soumy/OneDrive/Desktop/iit-g hacathon",
+      "external": true,
+      "repo": "https://github.com/23f2004742/playhack-ml-track-iit-guwahati",
+      "date": "2025-08",
+      "team": "Photon AI (4 members)",
+      "domains": [
+        "sports science",
+        "injury prediction",
+        "healthcare ML",
+        "tabular ML",
+        "time-series windows"
+      ],
+      "technologies": [
+        "Python",
+        "LightGBM",
+        "scikit-learn",
+        "pandas",
+        "numpy",
+        "joblib",
+        "Jupyter"
+      ],
+      "ai_ml_usage": [
+        "LightGBM binary classifier (Task A: injury yes/no)",
+        "LightGBM L1/quantile regression (Task B: onset day offset)",
+        "Hybrid per-sport median + learned correction (Task C: recovery duration)"
+      ],
+      "architecture": "Offline batch ML pipeline. Single notebook as source of truth, exported to playhack.py + predict.py. Fitted models + config serialized to models/ for reproducible inference.",
+      "features": [
+        "30-day observation-window feature engineering with structural leakage guard",
+        "Composite-objective threshold selection (not F1-optimal)",
+        "Multi-seed (42/7/202) out-of-fold evaluation",
+        "Threshold sweep with trivial-baseline reference points",
+        "Label-shuffle leakage test + adversarial train/test validation"
+      ],
+      "outcome": "Submitted. F1 0.5194, recall 0.9994, onset MAE 2.683 (skill 0.6476), recovery MAE 2.944 (skill 0.0919). Self-estimated composite 0.4196 +/- 0.0032. Official placement unknown.",
+      "selection_status": "unknown",
+      "reusable_components": [
+        {
+          "path": "code/playhack.py",
+          "what": "End-to-end tabular pipeline: windowed feature build, CV harness, multi-seed loop"
+        },
+        {
+          "path": "code/predict.py",
+          "what": "Load-model-and-score inference script; clean train/serve split"
+        },
+        {
+          "path": "code/PLAYHACK_Final.ipynb",
+          "what": "Documented notebook; Section 5 leakage proof, Section 8 final pipeline"
+        },
+        {
+          "path": "results/threshold_sweep.csv",
+          "what": "Pattern: sweep decision threshold against the COMPETITION metric, not the task metric"
+        },
+        {
+          "path": "PLAYHACK_Presentation.pptx",
+          "what": "Pitch structure: EDA -> methodology -> validation -> results"
+        }
+      ],
+      "lessons": [
+        "Optimize the threshold against the scoring rule you are actually graded on, not the per-task metric",
+        "Prevent leakage structurally (truncate once at load), then prove it by rebuilding features from mutilated inputs",
+        "Report trivial baselines alongside your score so judges can size the delta",
+        "State explicitly when a reported composite is your own assumption and not the official formula"
+      ]
+    },
+    {
+      "name": "claude-agent-scaffold",
+      "title": "Claude tool-calling agent scaffold",
+      "location": "C:/Users/soumy/OneDrive/Desktop/hackathon.zip",
+      "external": true,
+      "archived": true,
+      "date": "2026-09-04",
+      "domains": [
+        "agentic AI",
+        "developer tooling",
+        "LLM orchestration"
+      ],
+      "technologies": [
+        "Python",
+        "anthropic SDK >=1.3.0",
+        "requests",
+        "claude-opus-5"
+      ],
+      "ai_ml_usage": [
+        "client.beta.messages.tool_runner agent loop",
+        "@beta_tool decorator: type hints + docstring -> JSON schema",
+        "Anthropic server-side tools (web search, code execution)"
+      ],
+      "architecture": "Single-process CLI agent. tools.py defines the tool surface; agent.py owns the loop, history mirroring, pause_turn restarts and typed error handling.",
+      "features": [
+        "run_shell, read_file, write_file, edit_file, list_files, http_request",
+        "Workspace sandboxing - all paths resolved inside workspace, ../ rejected",
+        "Per-action approval prompts with --yolo bypass",
+        "30k-char tool-result truncation to protect the context window",
+        "Env-var substitution so secrets stay out of the transcript",
+        "Refusal fallback to a secondary model"
+      ],
+      "outcome": "Working scaffold, not tied to a specific hackathon submission.",
+      "selection_status": "n/a",
+      "reusable_components": [
+        {
+          "path": "tools.py",
+          "what": "Drop-in tool surface + @beta_tool contract; add a tool by writing one documented function"
+        },
+        {
+          "path": "agent.py",
+          "what": "Agent loop with history mirroring, pause_turn restarts, typed error handling"
+        }
+      ],
+      "lessons": [
+        "The docstring IS the prompt - summary line tells the model when to reach for a tool",
+        "Return an error string from a tool rather than raising, so the model can recover instead of crashing the loop",
+        "Truncate tool results or one cat of a large file blows the context window"
+      ],
+      "secret_scan": "Clean as of 2026-09-04 - .env.example holds a placeholder key only."
+    }
+  ]
+}

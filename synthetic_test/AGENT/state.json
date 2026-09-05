@@ -1,0 +1,2634 @@
+{
+  "name": "synthetic_test",
+  "phase": "done",
+  "created": "2026-09-04T10:46:30+00:00",
+  "updated": "2026-09-04T10:47:46+00:00",
+  "backend": "simulated",
+  "notes": [],
+  "graph": {
+    "tasks": [
+      {
+        "id": "requirements",
+        "agent": "requirements_analyst",
+        "objective": "Turn the problem statement into numbered functional and non-functional requirements, constraints, acceptance criteria, judging criteria and submission requirements.",
+        "depends_on": [],
+        "priority": "CRITICAL",
+        "impact": 5,
+        "effort": 2,
+        "phase": "intake",
+        "optional": false,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:46:33+00:00",
+        "attempts": 1,
+        "result": {
+          "status": "completed",
+          "summary": "Requirements Analyst completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [
+            {
+              "path": "PRODUCT/requirements.md",
+              "kind": "markdown",
+              "description": "produced by requirements_analyst",
+              "bytes": 3826
+            }
+          ],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "requirements_analyst",
+          "task_id": "requirements",
+          "tool_calls": 4,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.02,
+          "notes": [
+            "create PRODUCT/requirements.md (3761B)"
+          ]
+        }
+      },
+      {
+        "id": "market",
+        "agent": "market_researcher",
+        "objective": "Size and characterise the market this product enters, with sourced figures.",
+        "depends_on": [],
+        "priority": "MEDIUM",
+        "impact": 3,
+        "effort": 3,
+        "phase": "research",
+        "optional": true,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:46:33+00:00",
+        "attempts": 1,
+        "result": {
+          "status": "completed",
+          "summary": "Market Researcher completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [
+            {
+              "path": "RESEARCH/market_report.md",
+              "kind": "markdown",
+              "description": "produced by market_researcher",
+              "bytes": 2709
+            }
+          ],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "market_researcher",
+          "task_id": "market",
+          "tool_calls": 4,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.01,
+          "notes": [
+            "create RESEARCH/market_report.md (2657B)"
+          ]
+        }
+      },
+      {
+        "id": "competition",
+        "agent": "competitor_researcher",
+        "objective": "Identify who already solves this, compare them, and find the exploitable weakness.",
+        "depends_on": [],
+        "priority": "MEDIUM",
+        "impact": 3,
+        "effort": 3,
+        "phase": "research",
+        "optional": true,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:46:33+00:00",
+        "attempts": 1,
+        "result": {
+          "status": "completed",
+          "summary": "Competitor Researcher completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [
+            {
+              "path": "RESEARCH/competitive_analysis.md",
+              "kind": "markdown",
+              "description": "produced by competitor_researcher",
+              "bytes": 2604
+            }
+          ],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "competitor_researcher",
+          "task_id": "competition",
+          "tool_calls": 4,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.02,
+          "notes": [
+            "create RESEARCH/competitive_analysis.md (2554B)"
+          ]
+        }
+      },
+      {
+        "id": "tech_research",
+        "agent": "technical_researcher",
+        "objective": "Recommend the shortest credible technical path, naming what you rejected and why.",
+        "depends_on": [],
+        "priority": "HIGH",
+        "impact": 4,
+        "effort": 3,
+        "phase": "research",
+        "optional": false,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:46:33+00:00",
+        "attempts": 1,
+        "result": {
+          "status": "completed",
+          "summary": "Technical Researcher completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [
+            {
+              "path": "RESEARCH/technical_research.md",
+              "kind": "markdown",
+              "description": "produced by technical_researcher",
+              "bytes": 2551
+            }
+          ],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "technical_researcher",
+          "task_id": "tech_research",
+          "tool_calls": 4,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.02,
+          "notes": [
+            "create RESEARCH/technical_research.md (2501B)"
+          ]
+        }
+      },
+      {
+        "id": "user_research",
+        "agent": "user_researcher",
+        "objective": "Define the primary user, their current workflow, and the journey we must support.",
+        "depends_on": [],
+        "priority": "HIGH",
+        "impact": 4,
+        "effort": 2,
+        "phase": "research",
+        "optional": false,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:46:33+00:00",
+        "attempts": 1,
+        "result": {
+          "status": "completed",
+          "summary": "User Researcher completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [
+            {
+              "path": "RESEARCH/user_research.md",
+              "kind": "markdown",
+              "description": "produced by user_researcher",
+              "bytes": 3366
+            }
+          ],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "user_researcher",
+          "task_id": "user_research",
+          "tool_calls": 4,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.0,
+          "notes": [
+            "create RESEARCH/user_research.md (3306B)"
+          ]
+        }
+      },
+      {
+        "id": "product_plan",
+        "agent": "product_manager",
+        "objective": "Decide the MVP and produce a MoSCoW breakdown, including an explicit DO NOT BUILD list.",
+        "depends_on": [
+          "requirements"
+        ],
+        "priority": "CRITICAL",
+        "impact": 5,
+        "effort": 2,
+        "phase": "plan",
+        "optional": false,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:46:33+00:00",
+        "attempts": 1,
+        "result": {
+          "status": "completed",
+          "summary": "Product Manager completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [
+            {
+              "path": "PRODUCT/product_plan.md",
+              "kind": "markdown",
+              "description": "produced by product_manager",
+              "bytes": 4011
+            }
+          ],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "product_manager",
+          "task_id": "product_plan",
+          "tool_calls": 4,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.01,
+          "notes": [
+            "create PRODUCT/product_plan.md (3942B)"
+          ]
+        }
+      },
+      {
+        "id": "strategy",
+        "agent": "strategist",
+        "objective": "Define positioning and differentiation, and map every judging criterion to the evidence we will offer.",
+        "depends_on": [
+          "requirements"
+        ],
+        "priority": "HIGH",
+        "impact": 4,
+        "effort": 2,
+        "phase": "plan",
+        "optional": false,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:46:33+00:00",
+        "attempts": 1,
+        "result": {
+          "status": "completed",
+          "summary": "Product Strategist completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [
+            {
+              "path": "PRODUCT/strategy.md",
+              "kind": "markdown",
+              "description": "produced by strategist",
+              "bytes": 3678
+            }
+          ],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "strategist",
+          "task_id": "strategy",
+          "tool_calls": 4,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.01,
+          "notes": [
+            "create PRODUCT/strategy.md (3613B)"
+          ]
+        }
+      },
+      {
+        "id": "architecture",
+        "agent": "architect",
+        "objective": "Design the minimum architecture that meets the MUST HAVE scope and demos reliably.",
+        "depends_on": [
+          "requirements",
+          "product_plan"
+        ],
+        "priority": "CRITICAL",
+        "impact": 5,
+        "effort": 3,
+        "phase": "plan",
+        "optional": false,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:46:33+00:00",
+        "attempts": 1,
+        "result": {
+          "status": "completed",
+          "summary": "Architect completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [
+            {
+              "path": "PRODUCT/architecture.md",
+              "kind": "markdown",
+              "description": "produced by architect",
+              "bytes": 3421
+            }
+          ],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "architect",
+          "task_id": "architecture",
+          "tool_calls": 5,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.01,
+          "notes": [
+            "create PRODUCT/architecture.md (3358B)"
+          ]
+        }
+      },
+      {
+        "id": "ux",
+        "agent": "ux_designer",
+        "objective": "Specify the user journey, IA, and the onboarding, empty and error states.",
+        "depends_on": [
+          "product_plan"
+        ],
+        "priority": "HIGH",
+        "impact": 4,
+        "effort": 2,
+        "phase": "design",
+        "optional": false,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:46:33+00:00",
+        "attempts": 1,
+        "result": {
+          "status": "completed",
+          "summary": "UX Designer completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [
+            {
+              "path": "DESIGN/ux.md",
+              "kind": "markdown",
+              "description": "produced by ux_designer",
+              "bytes": 3130
+            }
+          ],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "ux_designer",
+          "task_id": "ux",
+          "tool_calls": 4,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.01,
+          "notes": [
+            "create DESIGN/ux.md (3072B)"
+          ]
+        }
+      },
+      {
+        "id": "ui",
+        "agent": "ui_designer",
+        "objective": "Specify the visual system with concrete values a frontend engineer can implement directly.",
+        "depends_on": [
+          "ux"
+        ],
+        "priority": "MEDIUM",
+        "impact": 3,
+        "effort": 2,
+        "phase": "design",
+        "optional": false,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:46:33+00:00",
+        "attempts": 1,
+        "result": {
+          "status": "completed",
+          "summary": "UI Designer completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [
+            {
+              "path": "DESIGN/ui.md",
+              "kind": "markdown",
+              "description": "produced by ui_designer",
+              "bytes": 3377
+            }
+          ],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "ui_designer",
+          "task_id": "ui",
+          "tool_calls": 4,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.01,
+          "notes": [
+            "create DESIGN/ui.md (3314B)"
+          ]
+        }
+      },
+      {
+        "id": "brand",
+        "agent": "brand_designer",
+        "objective": "Name the product and write the tagline and positioning line. Timebox this.",
+        "depends_on": [
+          "strategy"
+        ],
+        "priority": "LOW",
+        "impact": 2,
+        "effort": 1,
+        "phase": "design",
+        "optional": true,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:47:46+00:00",
+        "attempts": 5,
+        "result": {
+          "status": "completed",
+          "summary": "Brand Designer completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [
+            {
+              "path": "DESIGN/brand.md",
+              "kind": "markdown",
+              "description": "produced by brand_designer",
+              "bytes": 2489
+            }
+          ],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "brand_designer",
+          "task_id": "brand",
+          "tool_calls": 4,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.01,
+          "notes": [
+            "create DESIGN/brand.md (2439B)"
+          ]
+        }
+      },
+      {
+        "id": "backend",
+        "agent": "backend_engineer",
+        "objective": "Implement the API and business logic for the MUST HAVE scope, and run it.",
+        "depends_on": [
+          "architecture"
+        ],
+        "priority": "CRITICAL",
+        "impact": 5,
+        "effort": 4,
+        "phase": "build",
+        "optional": false,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:46:33+00:00",
+        "attempts": 1,
+        "result": {
+          "status": "completed",
+          "summary": "Backend Engineer completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [
+            {
+              "path": "src/backend/api.py",
+              "kind": "code",
+              "description": "produced by backend_engineer",
+              "bytes": 677
+            }
+          ],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "backend_engineer",
+          "task_id": "backend",
+          "tool_calls": 4,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.01,
+          "notes": [
+            "create src/backend/api.py (654B)"
+          ]
+        }
+      },
+      {
+        "id": "ml",
+        "agent": "ml_engineer",
+        "objective": "Build the model pipeline and evaluate it honestly against the metric being scored.",
+        "depends_on": [
+          "architecture"
+        ],
+        "priority": "CRITICAL",
+        "impact": 5,
+        "effort": 5,
+        "phase": "build",
+        "optional": false,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:46:33+00:00",
+        "attempts": 1,
+        "result": {
+          "status": "completed",
+          "summary": "ML Engineer completed its task using the simulated backend. Produced 2 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [
+            {
+              "path": "src/ml/pipeline.py",
+              "kind": "code",
+              "description": "produced by ml_engineer",
+              "bytes": 662
+            },
+            {
+              "path": "VALIDATION/ml_eval.md",
+              "kind": "markdown",
+              "description": "produced by ml_engineer",
+              "bytes": 2665
+            }
+          ],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "ml_engineer",
+          "task_id": "ml",
+          "tool_calls": 5,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.01,
+          "notes": [
+            "create src/ml/pipeline.py (639B)",
+            "create VALIDATION/ml_eval.md (2615B)"
+          ]
+        }
+      },
+      {
+        "id": "ai",
+        "agent": "ai_engineer",
+        "objective": "Build the LLM integration: prompts, tools, and the agent loop.",
+        "depends_on": [
+          "architecture"
+        ],
+        "priority": "CRITICAL",
+        "impact": 5,
+        "effort": 4,
+        "phase": "build",
+        "optional": false,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:46:33+00:00",
+        "attempts": 1,
+        "result": {
+          "status": "completed",
+          "summary": "AI Engineer completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [
+            {
+              "path": "src/ai/agent.py",
+              "kind": "code",
+              "description": "produced by ai_engineer",
+              "bytes": 659
+            }
+          ],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "ai_engineer",
+          "task_id": "ai",
+          "tool_calls": 4,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.01,
+          "notes": [
+            "create src/ai/agent.py (636B)"
+          ]
+        }
+      },
+      {
+        "id": "frontend",
+        "agent": "frontend_engineer",
+        "objective": "Build the demo-ready interface against the UX and UI specs.",
+        "depends_on": [
+          "architecture"
+        ],
+        "priority": "HIGH",
+        "impact": 4,
+        "effort": 4,
+        "phase": "build",
+        "optional": false,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:46:33+00:00",
+        "attempts": 1,
+        "result": {
+          "status": "completed",
+          "summary": "Frontend Engineer completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [
+            {
+              "path": "src/frontend/index.html",
+              "kind": "html",
+              "description": "produced by frontend_engineer",
+              "bytes": 1034
+            }
+          ],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "frontend_engineer",
+          "task_id": "frontend",
+          "tool_calls": 4,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.01,
+          "notes": [
+            "create src/frontend/index.html (1005B)"
+          ]
+        }
+      },
+      {
+        "id": "devops",
+        "agent": "devops_engineer",
+        "objective": "Make the project start from a clean clone with one command, with no secrets committed.",
+        "depends_on": [
+          "architecture"
+        ],
+        "priority": "MEDIUM",
+        "impact": 3,
+        "effort": 2,
+        "phase": "build",
+        "optional": false,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:46:33+00:00",
+        "attempts": 1,
+        "result": {
+          "status": "completed",
+          "summary": "DevOps Engineer completed its task using the simulated backend. Produced 2 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [
+            {
+              "path": "DOCUMENTATION/setup.md",
+              "kind": "markdown",
+              "description": "produced by devops_engineer",
+              "bytes": 2362
+            },
+            {
+              "path": ".env.example",
+              "kind": "example",
+              "description": "produced by devops_engineer",
+              "bytes": 134
+            }
+          ],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "devops_engineer",
+          "task_id": "devops",
+          "tool_calls": 5,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.01,
+          "notes": [
+            "create DOCUMENTATION/setup.md (2316B)",
+            "create .env.example (130B)"
+          ]
+        }
+      },
+      {
+        "id": "integrate",
+        "agent": "developer",
+        "objective": "Wire the components together and make the end-to-end path run.",
+        "depends_on": [
+          "architecture"
+        ],
+        "priority": "HIGH",
+        "impact": 4,
+        "effort": 3,
+        "phase": "build",
+        "optional": true,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:46:33+00:00",
+        "attempts": 1,
+        "result": {
+          "status": "completed",
+          "summary": "Developer completed its task using the simulated backend. Produced 0 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "developer",
+          "task_id": "integrate",
+          "tool_calls": 3,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.0,
+          "notes": []
+        }
+      },
+      {
+        "id": "test",
+        "agent": "tester",
+        "objective": "Test the product for real and report PASS/FAIL/BLOCKED per case, prioritising the demo path.",
+        "depends_on": [
+          "architecture"
+        ],
+        "priority": "CRITICAL",
+        "impact": 5,
+        "effort": 3,
+        "phase": "validate",
+        "optional": false,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:46:33+00:00",
+        "attempts": 1,
+        "result": {
+          "status": "completed",
+          "summary": "Tester / QA Engineer completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [
+            {
+              "path": "VALIDATION/test_report.md",
+              "kind": "markdown",
+              "description": "produced by tester",
+              "bytes": 2155
+            }
+          ],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "tester",
+          "task_id": "test",
+          "tool_calls": 3,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.0,
+          "notes": [
+            "create VALIDATION/test_report.md (2110B)"
+          ]
+        }
+      },
+      {
+        "id": "code_review",
+        "agent": "code_reviewer",
+        "objective": "Review the code for correctness and unnecessary complexity; rank findings by severity.",
+        "depends_on": [
+          "architecture"
+        ],
+        "priority": "MEDIUM",
+        "impact": 3,
+        "effort": 2,
+        "phase": "validate",
+        "optional": true,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:46:33+00:00",
+        "attempts": 1,
+        "result": {
+          "status": "completed",
+          "summary": "Code Reviewer completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [
+            {
+              "path": "VALIDATION/code_review.md",
+              "kind": "markdown",
+              "description": "produced by code_reviewer",
+              "bytes": 1531
+            }
+          ],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "code_reviewer",
+          "task_id": "code_review",
+          "tool_calls": 3,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.0,
+          "notes": [
+            "create VALIDATION/code_review.md (1494B)"
+          ]
+        }
+      },
+      {
+        "id": "security",
+        "agent": "security_reviewer",
+        "objective": "Scan for secrets and insecure patterns, then triage what the scanners return.",
+        "depends_on": [
+          "architecture"
+        ],
+        "priority": "HIGH",
+        "impact": 4,
+        "effort": 2,
+        "phase": "validate",
+        "optional": false,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:46:33+00:00",
+        "attempts": 1,
+        "result": {
+          "status": "completed",
+          "summary": "Security Reviewer completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [
+            {
+              "path": "VALIDATION/security_review.md",
+              "kind": "markdown",
+              "description": "produced by security_reviewer",
+              "bytes": 1881
+            }
+          ],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "security_reviewer",
+          "task_id": "security",
+          "tool_calls": 3,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.0,
+          "notes": [
+            "create VALIDATION/security_review.md (1840B)"
+          ]
+        }
+      },
+      {
+        "id": "docs",
+        "agent": "technical_writer",
+        "objective": "Document what was actually built: README, technical docs, verified setup steps.",
+        "depends_on": [
+          "architecture"
+        ],
+        "priority": "HIGH",
+        "impact": 4,
+        "effort": 2,
+        "phase": "deliver",
+        "optional": false,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:46:33+00:00",
+        "attempts": 1,
+        "result": {
+          "status": "completed",
+          "summary": "Technical Writer completed its task using the simulated backend. Produced 2 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [
+            {
+              "path": "README.md",
+              "kind": "markdown",
+              "description": "produced by technical_writer",
+              "bytes": 1791
+            },
+            {
+              "path": "DOCUMENTATION/technical.md",
+              "kind": "markdown",
+              "description": "produced by technical_writer",
+              "bytes": 914
+            }
+          ],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "technical_writer",
+          "task_id": "docs",
+          "tool_calls": 4,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.01,
+          "notes": [
+            "create README.md (1750B)",
+            "create DOCUMENTATION/technical.md (885B)"
+          ]
+        }
+      },
+      {
+        "id": "demo",
+        "agent": "demo_engineer",
+        "objective": "Design and rehearse the shortest demo that proves the core value, with a fallback.",
+        "depends_on": [
+          "test"
+        ],
+        "priority": "CRITICAL",
+        "impact": 5,
+        "effort": 2,
+        "phase": "deliver",
+        "optional": false,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:47:17+00:00",
+        "attempts": 2,
+        "result": {
+          "status": "completed",
+          "summary": "Demo Engineer completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [
+            {
+              "path": "DEMO/demo_script.md",
+              "kind": "markdown",
+              "description": "produced by demo_engineer",
+              "bytes": 2484
+            }
+          ],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "demo_engineer",
+          "task_id": "demo",
+          "tool_calls": 3,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.0,
+          "notes": [
+            "overwrite DEMO/demo_script.md (2434B)"
+          ]
+        }
+      },
+      {
+        "id": "pitch",
+        "agent": "pitch_strategist",
+        "objective": "Map each judging criterion to real evidence and structure the narrative.",
+        "depends_on": [
+          "strategy"
+        ],
+        "priority": "HIGH",
+        "impact": 4,
+        "effort": 2,
+        "phase": "deliver",
+        "optional": false,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:46:33+00:00",
+        "attempts": 1,
+        "result": {
+          "status": "completed",
+          "summary": "Pitch Strategist completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [
+            {
+              "path": "PRESENTATION/pitch_strategy.md",
+              "kind": "markdown",
+              "description": "produced by pitch_strategist",
+              "bytes": 2545
+            }
+          ],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "pitch_strategist",
+          "task_id": "pitch",
+          "tool_calls": 3,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.01,
+          "notes": [
+            "create PRESENTATION/pitch_strategy.md (2496B)"
+          ]
+        }
+      },
+      {
+        "id": "slides",
+        "agent": "presentation_builder",
+        "objective": "Write the deck and render it to a real .pptx. Invent nothing.",
+        "depends_on": [
+          "pitch"
+        ],
+        "priority": "HIGH",
+        "impact": 4,
+        "effort": 2,
+        "phase": "deliver",
+        "optional": false,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:46:33+00:00",
+        "attempts": 1,
+        "result": {
+          "status": "completed",
+          "summary": "Presentation Builder completed its task using the simulated backend. Produced 2 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [
+            {
+              "path": "PRESENTATION/slides.md",
+              "kind": "markdown",
+              "description": "produced by presentation_builder",
+              "bytes": 1610
+            },
+            {
+              "path": "PRESENTATION/presentation.pptx",
+              "kind": "presentation",
+              "description": "produced by presentation_builder",
+              "bytes": 44686
+            }
+          ],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "presentation_builder",
+          "task_id": "slides",
+          "tool_calls": 4,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.25,
+          "notes": [
+            "create PRESENTATION/slides.md (1556B)",
+            "built PRESENTATION/presentation.pptx"
+          ]
+        }
+      },
+      {
+        "id": "req_audit",
+        "agent": "requirements_auditor",
+        "objective": "Check every requirement against evidence on disk and mark it satisfied, partial or missing.",
+        "depends_on": [
+          "test"
+        ],
+        "priority": "HIGH",
+        "impact": 4,
+        "effort": 2,
+        "phase": "deliver",
+        "optional": false,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:46:33+00:00",
+        "attempts": 1,
+        "result": {
+          "status": "completed",
+          "summary": "Requirements Auditor completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [
+            {
+              "path": "VALIDATION/requirements_audit.md",
+              "kind": "markdown",
+              "description": "produced by requirements_auditor",
+              "bytes": 2252
+            }
+          ],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "requirements_auditor",
+          "task_id": "req_audit",
+          "tool_calls": 3,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.0,
+          "notes": [
+            "create VALIDATION/requirements_audit.md (2207B)"
+          ]
+        }
+      },
+      {
+        "id": "final_audit",
+        "agent": "final_auditor",
+        "objective": "Audit the whole submission as a hostile judge and classify every issue.",
+        "depends_on": [
+          "req_audit",
+          "demo",
+          "docs",
+          "slides"
+        ],
+        "priority": "CRITICAL",
+        "impact": 5,
+        "effort": 2,
+        "phase": "deliver",
+        "optional": false,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:46:33+00:00",
+        "attempts": 1,
+        "result": {
+          "status": "completed",
+          "summary": "Final Auditor completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [
+            {
+              "path": "FINAL/final_audit.md",
+              "kind": "markdown",
+              "description": "produced by final_auditor",
+              "bytes": 3510
+            }
+          ],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "final_auditor",
+          "task_id": "final_audit",
+          "tool_calls": 3,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.01,
+          "notes": [
+            "create FINAL/final_audit.md (3447B)"
+          ]
+        }
+      },
+      {
+        "id": "submission",
+        "agent": "submission_manager",
+        "objective": "Verify every submission requirement against disk and package the deliverable.",
+        "depends_on": [
+          "final_audit"
+        ],
+        "priority": "CRITICAL",
+        "impact": 5,
+        "effort": 2,
+        "phase": "deliver",
+        "optional": false,
+        "status": "completed",
+        "started": "",
+        "finished": "2026-09-04T10:46:33+00:00",
+        "attempts": 1,
+        "result": {
+          "status": "completed",
+          "summary": "Submission Manager completed its task using the simulated backend. Produced 2 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+          "artifacts": [
+            {
+              "path": "SUBMISSION/submission_manifest.json",
+              "kind": "json",
+              "description": "produced by submission_manager",
+              "bytes": 210
+            },
+            {
+              "path": "SUBMISSION/submission_checklist.md",
+              "kind": "markdown",
+              "description": "produced by submission_manager",
+              "bytes": 1570
+            }
+          ],
+          "findings": [
+            {
+              "summary": "Simulated run: content is scaffolding, not analysis.",
+              "severity": "INFO",
+              "evidence": "",
+              "source": "SimulatedBackend"
+            }
+          ],
+          "decisions": [],
+          "assumptions": [
+            "Ran without an LLM; artifact content is templated."
+          ],
+          "risks": [],
+          "next_tasks": [],
+          "blocked_by": [],
+          "agent": "submission_manager",
+          "task_id": "submission",
+          "tool_calls": 5,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "duration_s": 0.08,
+          "notes": [
+            "create SUBMISSION/submission_manifest.json (203B)",
+            "create SUBMISSION/submission_checklist.md (1533B)",
+            "packaged SUBMISSION/submission.zip (35 files)"
+          ]
+        }
+      }
+    ]
+  },
+  "history": [
+    {
+      "status": "completed",
+      "summary": "Requirements Analyst completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "PRODUCT/requirements.md",
+          "kind": "markdown",
+          "description": "produced by requirements_analyst",
+          "bytes": 3826
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "requirements_analyst",
+      "task_id": "requirements",
+      "tool_calls": 4,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.02,
+      "notes": [
+        "create PRODUCT/requirements.md (3761B)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "Technical Researcher completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "RESEARCH/technical_research.md",
+          "kind": "markdown",
+          "description": "produced by technical_researcher",
+          "bytes": 2551
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "technical_researcher",
+      "task_id": "tech_research",
+      "tool_calls": 4,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.02,
+      "notes": [
+        "create RESEARCH/technical_research.md (2501B)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "Competitor Researcher completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "RESEARCH/competitive_analysis.md",
+          "kind": "markdown",
+          "description": "produced by competitor_researcher",
+          "bytes": 2604
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "competitor_researcher",
+      "task_id": "competition",
+      "tool_calls": 4,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.02,
+      "notes": [
+        "create RESEARCH/competitive_analysis.md (2554B)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "Market Researcher completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "RESEARCH/market_report.md",
+          "kind": "markdown",
+          "description": "produced by market_researcher",
+          "bytes": 2709
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "market_researcher",
+      "task_id": "market",
+      "tool_calls": 4,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.01,
+      "notes": [
+        "create RESEARCH/market_report.md (2657B)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "User Researcher completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "RESEARCH/user_research.md",
+          "kind": "markdown",
+          "description": "produced by user_researcher",
+          "bytes": 3366
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "user_researcher",
+      "task_id": "user_research",
+      "tool_calls": 4,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.0,
+      "notes": [
+        "create RESEARCH/user_research.md (3306B)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "Product Manager completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "PRODUCT/product_plan.md",
+          "kind": "markdown",
+          "description": "produced by product_manager",
+          "bytes": 4011
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "product_manager",
+      "task_id": "product_plan",
+      "tool_calls": 4,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.01,
+      "notes": [
+        "create PRODUCT/product_plan.md (3942B)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "Product Strategist completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "PRODUCT/strategy.md",
+          "kind": "markdown",
+          "description": "produced by strategist",
+          "bytes": 3678
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "strategist",
+      "task_id": "strategy",
+      "tool_calls": 4,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.01,
+      "notes": [
+        "create PRODUCT/strategy.md (3613B)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "Architect completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "PRODUCT/architecture.md",
+          "kind": "markdown",
+          "description": "produced by architect",
+          "bytes": 3421
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "architect",
+      "task_id": "architecture",
+      "tool_calls": 5,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.01,
+      "notes": [
+        "create PRODUCT/architecture.md (3358B)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "Pitch Strategist completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "PRESENTATION/pitch_strategy.md",
+          "kind": "markdown",
+          "description": "produced by pitch_strategist",
+          "bytes": 2545
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "pitch_strategist",
+      "task_id": "pitch",
+      "tool_calls": 3,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.01,
+      "notes": [
+        "create PRESENTATION/pitch_strategy.md (2496B)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "UX Designer completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "DESIGN/ux.md",
+          "kind": "markdown",
+          "description": "produced by ux_designer",
+          "bytes": 3130
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "ux_designer",
+      "task_id": "ux",
+      "tool_calls": 4,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.01,
+      "notes": [
+        "create DESIGN/ux.md (3072B)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "Brand Designer completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "DESIGN/brand.md",
+          "kind": "markdown",
+          "description": "produced by brand_designer",
+          "bytes": 2489
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "brand_designer",
+      "task_id": "brand",
+      "tool_calls": 4,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.01,
+      "notes": [
+        "create DESIGN/brand.md (2439B)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "Tester / QA Engineer completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "VALIDATION/test_report.md",
+          "kind": "markdown",
+          "description": "produced by tester",
+          "bytes": 2155
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "tester",
+      "task_id": "test",
+      "tool_calls": 3,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.0,
+      "notes": [
+        "create VALIDATION/test_report.md (2110B)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "AI Engineer completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "src/ai/agent.py",
+          "kind": "code",
+          "description": "produced by ai_engineer",
+          "bytes": 659
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "ai_engineer",
+      "task_id": "ai",
+      "tool_calls": 4,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.01,
+      "notes": [
+        "create src/ai/agent.py (636B)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "Backend Engineer completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "src/backend/api.py",
+          "kind": "code",
+          "description": "produced by backend_engineer",
+          "bytes": 677
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "backend_engineer",
+      "task_id": "backend",
+      "tool_calls": 4,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.01,
+      "notes": [
+        "create src/backend/api.py (654B)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "ML Engineer completed its task using the simulated backend. Produced 2 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "src/ml/pipeline.py",
+          "kind": "code",
+          "description": "produced by ml_engineer",
+          "bytes": 662
+        },
+        {
+          "path": "VALIDATION/ml_eval.md",
+          "kind": "markdown",
+          "description": "produced by ml_engineer",
+          "bytes": 2665
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "ml_engineer",
+      "task_id": "ml",
+      "tool_calls": 5,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.01,
+      "notes": [
+        "create src/ml/pipeline.py (639B)",
+        "create VALIDATION/ml_eval.md (2615B)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "Technical Writer completed its task using the simulated backend. Produced 2 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "README.md",
+          "kind": "markdown",
+          "description": "produced by technical_writer",
+          "bytes": 1791
+        },
+        {
+          "path": "DOCUMENTATION/technical.md",
+          "kind": "markdown",
+          "description": "produced by technical_writer",
+          "bytes": 914
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "technical_writer",
+      "task_id": "docs",
+      "tool_calls": 4,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.01,
+      "notes": [
+        "create README.md (1750B)",
+        "create DOCUMENTATION/technical.md (885B)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "Security Reviewer completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "VALIDATION/security_review.md",
+          "kind": "markdown",
+          "description": "produced by security_reviewer",
+          "bytes": 1881
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "security_reviewer",
+      "task_id": "security",
+      "tool_calls": 3,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.0,
+      "notes": [
+        "create VALIDATION/security_review.md (1840B)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "Demo Engineer completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "DEMO/demo_script.md",
+          "kind": "markdown",
+          "description": "produced by demo_engineer",
+          "bytes": 2484
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "demo_engineer",
+      "task_id": "demo",
+      "tool_calls": 3,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.0,
+      "notes": [
+        "create DEMO/demo_script.md (2434B)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "Requirements Auditor completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "VALIDATION/requirements_audit.md",
+          "kind": "markdown",
+          "description": "produced by requirements_auditor",
+          "bytes": 2252
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "requirements_auditor",
+      "task_id": "req_audit",
+      "tool_calls": 3,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.0,
+      "notes": [
+        "create VALIDATION/requirements_audit.md (2207B)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "Presentation Builder completed its task using the simulated backend. Produced 2 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "PRESENTATION/slides.md",
+          "kind": "markdown",
+          "description": "produced by presentation_builder",
+          "bytes": 1610
+        },
+        {
+          "path": "PRESENTATION/presentation.pptx",
+          "kind": "presentation",
+          "description": "produced by presentation_builder",
+          "bytes": 44686
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "presentation_builder",
+      "task_id": "slides",
+      "tool_calls": 4,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.25,
+      "notes": [
+        "create PRESENTATION/slides.md (1556B)",
+        "built PRESENTATION/presentation.pptx"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "Developer completed its task using the simulated backend. Produced 0 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "developer",
+      "task_id": "integrate",
+      "tool_calls": 3,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.0,
+      "notes": []
+    },
+    {
+      "status": "completed",
+      "summary": "Frontend Engineer completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "src/frontend/index.html",
+          "kind": "html",
+          "description": "produced by frontend_engineer",
+          "bytes": 1034
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "frontend_engineer",
+      "task_id": "frontend",
+      "tool_calls": 4,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.01,
+      "notes": [
+        "create src/frontend/index.html (1005B)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "Code Reviewer completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "VALIDATION/code_review.md",
+          "kind": "markdown",
+          "description": "produced by code_reviewer",
+          "bytes": 1531
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "code_reviewer",
+      "task_id": "code_review",
+      "tool_calls": 3,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.0,
+      "notes": [
+        "create VALIDATION/code_review.md (1494B)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "Final Auditor completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "FINAL/final_audit.md",
+          "kind": "markdown",
+          "description": "produced by final_auditor",
+          "bytes": 3510
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "final_auditor",
+      "task_id": "final_audit",
+      "tool_calls": 3,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.01,
+      "notes": [
+        "create FINAL/final_audit.md (3447B)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "DevOps Engineer completed its task using the simulated backend. Produced 2 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "DOCUMENTATION/setup.md",
+          "kind": "markdown",
+          "description": "produced by devops_engineer",
+          "bytes": 2362
+        },
+        {
+          "path": ".env.example",
+          "kind": "example",
+          "description": "produced by devops_engineer",
+          "bytes": 134
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "devops_engineer",
+      "task_id": "devops",
+      "tool_calls": 5,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.01,
+      "notes": [
+        "create DOCUMENTATION/setup.md (2316B)",
+        "create .env.example (130B)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "UI Designer completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "DESIGN/ui.md",
+          "kind": "markdown",
+          "description": "produced by ui_designer",
+          "bytes": 3377
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "ui_designer",
+      "task_id": "ui",
+      "tool_calls": 4,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.01,
+      "notes": [
+        "create DESIGN/ui.md (3314B)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "Submission Manager completed its task using the simulated backend. Produced 2 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "SUBMISSION/submission_manifest.json",
+          "kind": "json",
+          "description": "produced by submission_manager",
+          "bytes": 210
+        },
+        {
+          "path": "SUBMISSION/submission_checklist.md",
+          "kind": "markdown",
+          "description": "produced by submission_manager",
+          "bytes": 1570
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "submission_manager",
+      "task_id": "submission",
+      "tool_calls": 5,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.08,
+      "notes": [
+        "create SUBMISSION/submission_manifest.json (203B)",
+        "create SUBMISSION/submission_checklist.md (1533B)",
+        "packaged SUBMISSION/submission.zip (35 files)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "Demo Engineer completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "DEMO/demo_script.md",
+          "kind": "markdown",
+          "description": "produced by demo_engineer",
+          "bytes": 2484
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "demo_engineer",
+      "task_id": "demo",
+      "tool_calls": 3,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.0,
+      "notes": [
+        "overwrite DEMO/demo_script.md (2434B)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "Brand Designer completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "DESIGN/brand.md",
+          "kind": "markdown",
+          "description": "produced by brand_designer",
+          "bytes": 2489
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "brand_designer",
+      "task_id": "brand",
+      "tool_calls": 4,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.0,
+      "notes": []
+    },
+    {
+      "status": "completed",
+      "summary": "Brand Designer completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "DESIGN/brand.md",
+          "kind": "markdown",
+          "description": "produced by brand_designer",
+          "bytes": 2489
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "brand_designer",
+      "task_id": "brand",
+      "tool_calls": 4,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.0,
+      "notes": []
+    },
+    {
+      "status": "failed",
+      "summary": "Brand Designer completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "brand_designer",
+      "task_id": "brand",
+      "tool_calls": 4,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.0,
+      "notes": [
+        "artifact contract not met: DESIGN/brand.md (missing)"
+      ]
+    },
+    {
+      "status": "completed",
+      "summary": "Brand Designer completed its task using the simulated backend. Produced 1 artifact(s). Content is structural scaffolding, not model-authored analysis.",
+      "artifacts": [
+        {
+          "path": "DESIGN/brand.md",
+          "kind": "markdown",
+          "description": "produced by brand_designer",
+          "bytes": 2489
+        }
+      ],
+      "findings": [
+        {
+          "summary": "Simulated run: content is scaffolding, not analysis.",
+          "severity": "INFO",
+          "evidence": "",
+          "source": "SimulatedBackend"
+        }
+      ],
+      "decisions": [],
+      "assumptions": [
+        "Ran without an LLM; artifact content is templated."
+      ],
+      "risks": [],
+      "next_tasks": [],
+      "blocked_by": [],
+      "agent": "brand_designer",
+      "task_id": "brand",
+      "tool_calls": 4,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "duration_s": 0.01,
+      "notes": [
+        "create DESIGN/brand.md (2439B)"
+      ]
+    }
+  ]
+}
