@@ -1,6 +1,6 @@
 Hackathon Agent OS
 
-«From problem statement to submission — autonomously.»
+**From problem statement to submission, autonomously.**
 
 An autonomous, Claude-powered multi-agent system for building hackathon projects end-to-end.
 
@@ -88,7 +88,7 @@ Each specialist has:
 - artifact contracts
 - permitted write paths
 - dependencies
-- model/effort configuration
+- model and effort configuration
 
 This prevents every agent from having unrestricted access to the entire system.
 
@@ -351,31 +351,71 @@ The system reconstructs project context from persistent state, artifacts, handof
 
 Tasks are represented as a dependency graph rather than a simple linear pipeline.
 
-Example:
+Each task declares its dependencies, allowing the orchestrator to determine what can run immediately, what must wait, and what can execute in parallel.
 
+```mermaid
+flowchart TD
+    R[Requirements] --> P[Product]
+    R --> A[Architecture]
+
+    P --> B[Backend]
+    P --> F[Frontend]
+    P --> AI[AI / ML]
+
+    A --> B
+    A --> F
+    A --> AI
+
+    B --> T[Testing]
+    F --> T
+    AI --> T
+
+    T --> V[Validation / Review]
+    V --> FA[Final Audit]
+    FA --> PK[Package]
+```
+
+### Dependency-Aware Execution
+
+Independent tasks can execute in waves when their dependencies are satisfied. For example, Backend, Frontend, and AI / ML work can proceed independently after their required Product and Architecture inputs are available.
+
+```text
 Requirements
      │
-     ├──────────────┐
-     ▼              ▼
-Product         Architecture
+     ├───────────────┐
+     ▼               ▼
+  Product       Architecture
                     │
           ┌─────────┼─────────┐
           ▼         ▼         ▼
-       Backend   Frontend      AI
-          │         │          │
-          └─────────┼──────────┘
+       Backend   Frontend    AI / ML
+          │         │         │
+          └─────────┼─────────┘
                     ▼
-                  Testing
+                 Testing
+                    │
+                    ▼
+            Validation / Review
                     │
                     ▼
                Final Audit
                     │
                     ▼
                  Package
+```
 
-Independent tasks can execute in waves.
+A task is eligible to run only when its required dependencies have completed successfully.
 
-Failed or blocked tasks can propagate through the dependency graph without forcing the entire project to restart.
+This provides:
+
+- **Parallel execution** for independent tasks
+- **Dependency enforcement** between related tasks
+- **Failure isolation** when a task fails
+- **Automatic propagation** of blocked dependencies
+- **Resumability** from the last persisted state
+- **Wave-based execution** where tasks in the same dependency layer can run concurrently
+
+Failed or blocked tasks do not require the entire project to restart. The orchestrator can identify affected downstream tasks and continue from the valid portions of the graph.
 
 ---
 
@@ -703,6 +743,7 @@ A synthetic end-to-end hackathon can also be used to validate the orchestration 
 
 📁 Project Structure
 
+```text
 hackathon/
 │
 ├── hackathon.py
@@ -756,8 +797,7 @@ hackathon/
 ├── BUILD_REPORT.md
 ├── requirements.txt
 └── README.md
-
----
+```
 
 🔑 Design Principles
 
